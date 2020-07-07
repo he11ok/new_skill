@@ -36,3 +36,36 @@ $	匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multil
 {n}	n 是一个非负整数。匹配确定的 n 次。例如，'o{2}' 不能匹配 "Bob" 中的 'o'，但是能匹配 "food" 中的两个 o。
 {n,}	n 是一个非负整数。至少匹配n 次。例如，'o{2,}' 不能匹配 "Bob" 中的 'o'，但能匹配 "foooood" 中的所有 o。'o{1,}' 等价于 'o+'。'o{0,}' 则等价于 'o*'。
 {n,m}	m 和 n 均为非负整数，其中n <= m。最少匹配 n 次且最多匹配 m 次。例如，"o{1,3}" 将匹配 "fooooood" 中的前三个 o。'o{0,1}' 等价于 'o?'。请注意在逗号和两个数之间不能有空格。
+
+
+在匹配多个模式的时候，可以使用或表达式和多行匹配方法来实现。
+
+#使用或表达式来实现
+#patternA|patternB,模式A 或B两种匹配
+import re
+
+text = 'This string1 is an example for match string2'
+text= text.replace(' ','')   #去空格
+result = re.findall(r'string1|string2',text)   #分别匹配两种模式
+print(result)
+#>>>['string1', 'string2']
+
+
+#------------------------------------------------------------#
+result2 = re.findall(r'This(.*?)isanexampleformatch(.*$)',text)
+print(result2)
+#可同时输出两个或多个匹配的结果
+#>>>[('string1', 'string2')]
+
+
+#------------------------------------------------------------#
+#当带匹配文档包含多行时，需要使用re.S来开启多行模式
+text_multi = 'This string1 is \n an example \n for match string2'
+text_multi = text_multi .replace(' ','')   #去空格
+result3 = re.findall(r'string(.*?)',text_multi,re.S)   #利用re.S开启多行模式来忽略\n换行
+print(result3)
+#输出
+#>>>['string1', 'string2']
+————————————————
+版权声明：本文为CSDN博主「hitrjj」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/u014636245/article/details/83996806
