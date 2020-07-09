@@ -1,0 +1,20 @@
+在 Mac OS X 系统下，几乎绝大部分文件夹中都包含 .DS_Store 隐藏文件，及时手动删除了，也马上自动生成。在svn或者git版本控制时，相当烦人
+
+1. 并输入删除命令：
+
+sudo find / -name ".DS_Store" -depth -exec rm {} \;
+
+2. 删除后继续在终端输入：
+
+defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+
+3.
+
+然后按下回车，就可以防止 .DS_Store 文件的再生了。
+
+然后输入命令，删除已经生成的 .DS_Store文件：
+
+find / -name ".DS_Store" -type f -delete
+————————————————
+版权声明：本文为CSDN博主「skylin19840101」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/skylin19840101/article/details/81000055
