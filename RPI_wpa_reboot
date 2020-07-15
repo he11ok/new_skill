@@ -15,3 +15,8 @@ sudo service networking restart
 Re: Connecting to wifi router after changing wpa_supplicant.config without reboot (stretch)
 
 wpa_cli -i wlan0 reconfigure
+
+
+IF the WIFI ssymbol is missing, use defeult wpa_supplicant file and:
+
+sudo wpa_supplicant -Dwext -iwlan0 -c/etc/wpa_supplicant/wpa_supplicant.conf
