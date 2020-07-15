@@ -1,0 +1,17 @@
+Connecting to wifi router after changing wpa_supplicant.config without reboot (stretch)
+Quote
+Wed Nov 22, 2017 7:03 pm
+
+How do you get the raspberry pi to connect to the wifi router after setting the ssid/password without rebooting. In older versions I just used 'sudo ifdown wlan0; sudo ifup wlan0' but ifupdown is not supported on stretch.
+
+I have tried each of the following, none of which have work:
+Code: Select all
+
+sudo systemctl restart wpa_supplicant.service
+sudo systemctl restart networking.service
+sudo service networking restart
+
+
+Re: Connecting to wifi router after changing wpa_supplicant.config without reboot (stretch)
+
+wpa_cli -i wlan0 reconfigure
