@@ -1,0 +1,3 @@
+start nginx on RPI
+
+sudo /etc/init.d/nginx start
