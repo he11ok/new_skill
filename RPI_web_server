@@ -1,3 +1,5 @@
 start nginx on RPI
 
 sudo /etc/init.d/nginx start
+
+https://blog.csdn.net/weixin_30778805/article/details/97429172
